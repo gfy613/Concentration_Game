@@ -14,9 +14,11 @@ export default function SingleCard({card,flippedCount,setFlippedCount,flip,setFl
     setFlippedCount(flippedCount + 1)
   
     if (flippedCount === 0) {
-      setFirstCard({index: card.id, matchSet: card.matchSet})
+      setFirstCard({id: card.id, matchSet: card.matchSet})
       console.log("check2: " + card.id)
       console.log("Check 2a: " + card.matchSet)
+      console.log(flip)
+
     }
     
     else {
@@ -28,38 +30,42 @@ export default function SingleCard({card,flippedCount,setFlippedCount,flip,setFl
          updateRemoveCard[card.id] = true
          setRemoveCard(updateRemoveCard)
          setFlippedCount(0)
-         let updateFlip = [flip]
+        //  let updateFlip = [flip]
       updateFlip[card.id]= false
       updateFlip[firstCard.id]= false
       setFlip(updateFlip)
+      setFirstCard({id:null,matchSet:null})
 
         },1500)}
 
       else{
         setTimeout(() => {
-        
-      let updateFlip = [flip]
+        console.log("first: " + firstCard.id)
+        console.log("sec: " + card.id)
+      // let updateFlip = [flip]
       updateFlip[card.id]= false
       updateFlip[firstCard.id]= false
       setFlip(updateFlip)
+      console.log("flip: " + flip)
+      console.log("remove: " + removeCard)
       setFlippedCount(0)
       setFirstCard({id:null,matchSet:null})
       },1500)}
   }}
  
 
-    return ( 
-      <Col md="auto">
-      <Card style={{ width: '18rem' }} className="text-center">
-        <Button>
-        <Card.Body onClick = {onCardClick}>
-          {!flip.[card.id] && removeCard.[card.id]  ? card.name : ''}
-          {flip.[card.id] && !removeCard.[card.id]  ? card.name : ''}
-          {!flip.[card.id] && !removeCard.[card.id]  ? card.id : ''}
-        </Card.Body>
-        </Button>
-        </Card> 
-        </Col>
-        
-    )
+  return ( 
+    <Col md="auto">
+    <Card style={{ width: '18rem' }} className="text-center">
+      <Button>
+      <Card.Body onClick = {onCardClick}>
+        {!flip[card.id] && removeCard[card.id]  ? card.name : ''}
+        {flip[card.id] && !removeCard[card.id]  ? card.name : ''}
+        {!flip[card.id] && !removeCard[card.id]  ? card.id : ''}
+      </Card.Body>
+      </Button>
+      </Card> 
+      </Col>
+      
+  )
 }

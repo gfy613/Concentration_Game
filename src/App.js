@@ -4,11 +4,12 @@ import Board from "./pages/Board";
 function App() {
 
   const [cards,setCards]= useState(SAMPLE_DECK)
+  const [score,setScore] = useState([0,0])
 
 
   return (
         <div>
-        <Board cards={cards}/>
+        <Board cards={cards} setCards={setCards} score={score} setScore={setScore} />
     </div>
   );
 }
