@@ -5,11 +5,12 @@ function App() {
 
   const [cards,setCards]= useState(SAMPLE_DECK)
   const [score,setScore] = useState([0,0])
+  const [player,setPlayer] = useState(true)
 
 
   return (
         <div>
-        <Board cards={cards} setCards={setCards} score={score} setScore={setScore} />
+        <Board cards={cards} setCards={setCards} score={score} setScore={setScore} player={player} setPlayer={setPlayer}/>
     </div>
   );
 }

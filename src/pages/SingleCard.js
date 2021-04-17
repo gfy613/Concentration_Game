@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import {Card, Button, Col}  from 'react-bootstrap';
 
-export default function SingleCard({card,flippedCount,setFlippedCount,flip,setFlip,firstCard, setFirstCard, removeCard,setRemoveCard, score, setScore}) {
+export default function SingleCard({card,flippedCount,setFlippedCount,flip,setFlip,firstCard, setFirstCard, removeCard,setRemoveCard, score, setScore, player, setPlayer}) {
 
 
 
@@ -36,7 +36,12 @@ export default function SingleCard({card,flippedCount,setFlippedCount,flip,setFl
       setFlip(updateFlip)
       setFirstCard({id:null,matchSet:null})
       let updateScore = [...score]
+      if (player) {
           updateScore[0]++;
+        }
+      else {
+          updateScore[1]++;
+      } 
           setScore(updateScore)
         },1500)}
 
@@ -52,6 +57,7 @@ export default function SingleCard({card,flippedCount,setFlippedCount,flip,setFl
       console.log("remove: " + removeCard)
       setFlippedCount(0)
       setFirstCard({id:null,matchSet:null})
+      setPlayer(!player)
       },1500)}
   }}
  
