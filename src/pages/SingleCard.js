@@ -1,21 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react'
 import {Card, Button, Col}  from 'react-bootstrap';
 
-export default function SingleCard({card,flippedCount,setFlippedCount,flip,setFlip,firstCard, setFirstCard, removeCard,setRemoveCard, score, setScore, player, setPlayer}) {
+export default function SingleCard({card,cardKey,flippedCount,setFlippedCount,flip,setFlip,firstCard, setFirstCard, removeCard,setRemoveCard, score, setScore, player, setPlayer}) {
 
 
-
+console.log(card)
+console.log(cardKey)
 
   const  onCardClick = async() => {
     console.log(flip)
     let updateFlip = [...flip] 
-    updateFlip[card.id]= true
+    updateFlip[cardKey]= true
     setFlip(updateFlip)
     setFlippedCount(flippedCount + 1)
   
     if (flippedCount === 0) {
-      setFirstCard({id: card.id, matchSet: card.matchSet})
-      console.log("check2: " + card.id)
+      setFirstCard({id: cardKey, matchSet: card.matchSet})
+      console.log("check2: " + cardKey)
       console.log("Check 2a: " + card.matchSet)
       console.log(flip)
 
@@ -27,11 +28,11 @@ export default function SingleCard({card,flippedCount,setFlippedCount,flip,setFl
         console.log("Its a match!!")
          let updateRemoveCard = [...removeCard]
          updateRemoveCard[firstCard.id] = true
-         updateRemoveCard[card.id] = true
+         updateRemoveCard[cardKey] = true
          setRemoveCard(updateRemoveCard)
          setFlippedCount(0)
         //  let updateFlip = [flip]
-      updateFlip[card.id]= false
+      updateFlip[cardKey]= false
       updateFlip[firstCard.id]= false
       setFlip(updateFlip)
       setFirstCard({id:null,matchSet:null})
@@ -48,9 +49,9 @@ export default function SingleCard({card,flippedCount,setFlippedCount,flip,setFl
       else{
         setTimeout(() => {
         console.log("first: " + firstCard.id)
-        console.log("sec: " + card.id)
+        console.log("sec: " + cardKey)
       // let updateFlip = [flip]
-      updateFlip[card.id]= false
+      updateFlip[cardKey]= false
       updateFlip[firstCard.id]= false
       setFlip(updateFlip)
       console.log("flip: " + flip)
@@ -67,9 +68,9 @@ export default function SingleCard({card,flippedCount,setFlippedCount,flip,setFl
     <Card style={{ width: '18rem' }} className="text-center">
       <Button>
       <Card.Body onClick = {onCardClick}>
-        {!flip[card.id] && removeCard[card.id]  ? card.name : ''}
-        {flip[card.id] && !removeCard[card.id]  ? card.name : ''}
-        {!flip[card.id] && !removeCard[card.id]  ? card.id : ''}
+        {!flip[cardKey] && removeCard[cardKey]  ? card.name : ''}
+        {flip[cardKey] && !removeCard[cardKey]  ? card.name : ''}
+        {!flip[cardKey] && !removeCard[cardKey]  ? cardKey : ''}
       </Card.Body>
       </Button>
       </Card> 
