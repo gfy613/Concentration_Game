@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import {Card, Button, Col}  from 'react-bootstrap';
 
-export default function SingleCard({card,cardKey,flippedCount,setFlippedCount,flip,setFlip,firstCard, setFirstCard, removeCard,setRemoveCard, score, setScore, player, setPlayer}) {
+
+export default function SingleCard({card,cardKey,flippedCount,setFlippedCount,flip,setFlip,firstCard, setFirstCard, removeCard,setRemoveCard, score, setScore, player, setPlayer, setGameOver }) {
 
 
-console.log(card)
-console.log(cardKey)
 
   const  onCardClick = async() => {
     console.log(flip)
@@ -22,7 +21,11 @@ console.log(cardKey)
 
     }
     
-    else {
+    else { 
+      if (cardKey === firstCard.id){
+        return
+      }
+      else{
       if (firstCard.matchSet === card.matchSet){
         setTimeout(()=>{
         console.log("Its a match!!")
@@ -44,6 +47,11 @@ console.log(cardKey)
           updateScore[1]++;
       } 
           setScore(updateScore)
+      if(!updateRemoveCard.includes(false)){
+          setGameOver(true)
+      }
+      console.log("total score: " + score[0])
+
         },1500)}
 
       else{
@@ -60,21 +68,23 @@ console.log(cardKey)
       setFirstCard({id:null,matchSet:null})
       setPlayer(!player)
       },1500)}
-  }}
+  }}}
  
 
   return ( 
-    <Col md="auto">
-    <Card style={{ width: '18rem' }} className="text-center">
-      <Button>
+   
+    <React.Fragment>
+{/*   
+    <Col size="md-3" > */}
+    <Card xs={12}  bg= "info" className= {!flip[cardKey] && removeCard[cardKey]  ? "invisible text-center mb-3 ":"text-center mb-3 "} >
       <Card.Body onClick = {onCardClick}>
-        {!flip[cardKey] && removeCard[cardKey]  ? card.name : ''}
+      {!flip[cardKey] && removeCard[cardKey]  ? card.name:" "}
         {flip[cardKey] && !removeCard[cardKey]  ? card.name : ''}
-        {!flip[cardKey] && !removeCard[cardKey]  ? cardKey : ''}
+        {!flip[cardKey] && !removeCard[cardKey]  ? 'Lets find a match' : ''}
       </Card.Body>
-      </Button>
       </Card> 
-      </Col>
-      
+      {/* </Col> */}
+      </React.Fragment>
   )
 }
+

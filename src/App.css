@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.Btn{
+  color: rgba(128, 128, 128, 0.582);
+}
+.Crd{
+  color: rgba(128, 128, 128, 0.582);
+}
+
+.visible {
+  visibility: visible;
+}
+.invisible {
+  visibility: hidden;
+}
+.element {
+  @include invisible(visible);
+}
+.element {
+  @include invisible(hidden);
+}

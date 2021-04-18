@@ -1,13 +1,18 @@
 import React from 'react'
-import {Card, Button, Col}  from 'react-bootstrap';
+import {Card, Container, Col}  from 'react-bootstrap';
+
 
 export default function Score({score, setScore}) {
     return (
-        <div>
-    <Col md="auto"> Score: {score[0]}
+        <React.Fragment>
+  
+    <Col md className="text-center"> 
+    <div>Score: {score[0]}</div>
         </Col>
-    <Col md="auto"> Score: {score[1]}
+    <Col md className="text-center"> 
+    <div>Score: {score[1]}</div>
         </Col>
-        </div>
+
+        </React.Fragment>
     )
 }

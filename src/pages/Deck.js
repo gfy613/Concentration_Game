@@ -1,9 +1,10 @@
   
 import React, { useState, useEffect, useRef } from 'react'
 import SingleCard from './SingleCard';
-import {CardDeck}  from 'react-bootstrap';
+import {CardColumns}  from 'react-bootstrap';
 
-export default function Deck({ cards, score, setScore, player, setPlayer }) {
+
+export default function Deck({ cards, score, setScore, player, setPlayer, setGameOver  }) {
 
   const [flippedCount, setFlippedCount] = useState(0)
   let [flip,setFlip] = useState([false, false, false, false, false, false])
@@ -11,13 +12,13 @@ export default function Deck({ cards, score, setScore, player, setPlayer }) {
   let [removeCard,setRemoveCard] = useState([false, false, false, false, false, false])
   return (
   
-    <div className = "card-grid">
-    <CardDeck>
+    <React.Fragment>
+    <CardColumns>
       {cards.map((card,index)=>{
-        return <SingleCard removeCard={removeCard} setRemoveCard ={setRemoveCard} firstCard={firstCard} setFirstCard={setFirstCard} card={card} key ={index} cardKey ={index} flippedCount={flippedCount} setFlippedCount={setFlippedCount} flip={flip} setFlip={setFlip} score={score} setScore={setScore} player={player} setPlayer={setPlayer} />
+        return <SingleCard removeCard={removeCard} setRemoveCard ={setRemoveCard} firstCard={firstCard} setFirstCard={setFirstCard} card={card} key ={index} cardKey ={index} flippedCount={flippedCount} setFlippedCount={setFlippedCount} flip={flip} setFlip={setFlip} score={score} setScore={setScore} player={player} setPlayer={setPlayer} setGameOver={setGameOver} />
       })}
-         </CardDeck>
-    </div>
+         </CardColumns>
+         </React.Fragment>
  
   );
 }
