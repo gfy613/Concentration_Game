@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Board from "./pages/Board";
-import GameOver from "./pages/GameOver";
+import Board from "./components/Board";
+import GameOver from "./components/GameOver";
 import "./App.css"
 import auburn from "./images/auburn.jpg"
 import usc from "./images/usc.jpg"
@@ -18,7 +18,7 @@ function App() {
   const [cards, setCards] = useState([])
   const [score, setScore] = useState([0, 0])
   const [player, setPlayer] = useState(true)
-  const [gameOver, setGameOver] = useState(false)
+  const [gameOver, setGameOver] = useState(true)
 
 
   useEffect(() => {

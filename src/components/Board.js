@@ -17,7 +17,7 @@ export default function Board({ cards, score, setScore, player, setPlayer, setGa
     <Row className="justify-content-md-center">
     <Score score={score} setScore = {setScore}/>
     </Row>
-    <Row className="justify-content-md-center text-center">
+    <Row className="justify-content-md-center">
         <h3>
           {player  ? "Player 1 it's your turn":"Player 2 it's your turn"}
         </h3>

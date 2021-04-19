@@ -6,9 +6,9 @@ import SingleCard from './SingleCard';
 export default function Deck({ cards, score, setScore, player, setPlayer, setGameOver  }) {
 
   const [flippedCount, setFlippedCount] = useState(0)
-  let [flip,setFlip] = useState([false, false, false, false, false, false])
+  let [flip,setFlip] = useState([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
   let [firstCard,setFirstCard]= useState({index: null,matchSet: null})
-  let [removeCard,setRemoveCard] = useState([false, false, false, false, false, false])
+  let [removeCard,setRemoveCard] = useState([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
   let [wait, setWait] = useState(false)
   return (
   

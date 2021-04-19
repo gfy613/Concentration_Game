@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Jumbotron, Button } from 'react-bootstrap';
+import { Jumbotron, Button, Container } from 'react-bootstrap';
 
 export default function GameOver({ score, setScore, setGameOver }) {
 
@@ -28,13 +28,15 @@ export default function GameOver({ score, setScore, setGameOver }) {
     }
 
     return (
-        <Jumbotron>
-            <h1>
-                {winner[0] ? "Player 1 wins! Score: " + score[0] : " "}
-                {winner[1] ? "Player 2 wins! Score: " + score[1] : " "}
-                {!winner[0] && !winner[1] ? "Its a draw" : " "}
-            </h1>
-            <Button variant="primary" onClick={onButtonClick}>Replay?</Button>
-        </Jumbotron>
+        <Container>
+            <Jumbotron className="justify-content-md-center  text-center bottom">
+                <h1>
+                    {winner[0] ? "Player 1 wins! Score: " + score[0] : " "}
+                    {winner[1] ? "Player 2 wins! Score: " + score[1] : " "}
+                    {!winner[0] && !winner[1] ? "It's a draw" : " "}
+                </h1>
+                <Button variant="primary" onClick={onButtonClick}>Replay?</Button>
+            </Jumbotron>
+        </Container>
     )
 }

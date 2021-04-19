@@ -72,8 +72,8 @@ export default function SingleCard({ card, cardKey, flippedCount, setFlippedCoun
 
     <React.Fragment>
 
-      <Col md={3} xs={4} >
-        <Card bg="info" className={!flip[cardKey] && removeCard[cardKey] ? "invisible crd mb-3 " : "crd mb-3 "} >
+      <Col md={3} xs={4}>
+        <Card bg="info" className={!flip[cardKey] && removeCard[cardKey] ? "invisible crd mb-3" : "crd mb-3"} >
 
           {!flip[cardKey] && removeCard[cardKey] ? <Card.Img onClick={onCardClick}
             variant="top" className="logo card-img-top"

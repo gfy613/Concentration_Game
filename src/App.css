@@ -54,11 +54,11 @@
 .logo {
   height: 100%;
   width: 100%;
-
   resize: both;
 }
 
 .crd {
   height: 100px;
   width: 100px;
+  display: block;
 }
