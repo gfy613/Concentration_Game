@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {Jumbotron}  from 'react-bootstrap';
+import {Jumbotron, Button}  from 'react-bootstrap';
 
-export default function GameOver( {score}) {
+export default function GameOver( {score, setScore, setGameOver}) {
 
     const [winner, setWinner] = useState([false, false])
 
     let updateWinner = [...winner]
 
-    useEffect(() =>
+    useEffect(() => 
     findWinner()
-
     )
     const  findWinner = async() => {
 
@@ -24,6 +23,16 @@ export default function GameOver( {score}) {
 
 }
 
+const  onButtonClick = async() => {
+
+    setScore([0,0])
+    setGameOver(false)
+
+}
+
+
+
+
     return (
         <Jumbotron>
             <h1>
@@ -33,6 +42,10 @@ export default function GameOver( {score}) {
 
             </h1>
 
+            <Button variant="primary" onClick = {onButtonClick}>Replay?</Button>
+
 </Jumbotron>
+
+
     )
 }

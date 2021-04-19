@@ -1,19 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react'
 import {Card, Button, Col}  from 'react-bootstrap';
+import football from "../images/football.jpg"
+
 
 
 export default function SingleCard({card,cardKey,flippedCount,setFlippedCount,flip,setFlip,firstCard, setFirstCard, removeCard,setRemoveCard, score, setScore, player, setPlayer, setGameOver }) {
 
+  let [wait,setWait] = useState(false)
 
 
   const  onCardClick = async() => {
+
+    if (wait){
+      return;
+    }
+    else {
     console.log(flip)
     let updateFlip = [...flip] 
     updateFlip[cardKey]= true
     setFlip(updateFlip)
     setFlippedCount(flippedCount + 1)
-  
+    setWait(true);
+    
     if (flippedCount === 0) {
+      
+      console.log("wait: " + wait)
       setFirstCard({id: cardKey, matchSet: card.matchSet})
       console.log("check2: " + cardKey)
       console.log("Check 2a: " + card.matchSet)
@@ -23,7 +34,7 @@ export default function SingleCard({card,cardKey,flippedCount,setFlippedCount,fl
     
     else { 
       if (cardKey === firstCard.id){
-        return
+        return;
       }
       else{
       if (firstCard.matchSet === card.matchSet){
@@ -68,22 +79,27 @@ export default function SingleCard({card,cardKey,flippedCount,setFlippedCount,fl
       setFirstCard({id:null,matchSet:null})
       setPlayer(!player)
       },1500)}
-  }}}
+  }}}}
  
 
   return ( 
    
     <React.Fragment>
-{/*   
-    <Col size="md-3" > */}
-    <Card xs={12}  bg= "info" className= {!flip[cardKey] && removeCard[cardKey]  ? "invisible text-center mb-3 ":"text-center mb-3 "} >
-      <Card.Body onClick = {onCardClick}>
-      {!flip[cardKey] && removeCard[cardKey]  ? card.name:" "}
-        {flip[cardKey] && !removeCard[cardKey]  ? card.name : ''}
-        {!flip[cardKey] && !removeCard[cardKey]  ? 'Lets find a match' : ''}
-      </Card.Body>
+  
+    <Col md={3} xs={4} >
+    <Card  bg= "info" className= {!flip[cardKey] && removeCard[cardKey]  ? "invisible crd mb-3 ":"crd mb-3 "} >
+      
+      {!flip[cardKey] && removeCard[cardKey]  ? <Card.Img  onClick = {onCardClick}
+      variant="top"  className="logo card-img-top"
+      src= {card.src} /> :" "}
+        {flip[cardKey] && !removeCard[cardKey]  ? <Card.Img  onClick = {onCardClick}
+      variant="top"  className="logo card-img-top"
+      src= {card.src} /> : ''}
+        {!flip[cardKey] && !removeCard[cardKey]  ? <Card.Img  onClick = {onCardClick}
+      variant="top"  className="logo card-img-top"
+      src= {football} />  : ''}
       </Card> 
-      {/* </Col> */}
+      </Col>
       </React.Fragment>
   )
 }

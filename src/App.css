@@ -44,15 +44,21 @@
   color: rgba(128, 128, 128, 0.582);
 }
 
-.visible {
-  visibility: visible;
+.Bckcolor{
+  background-color: darkgray;
+  background-size: cover;
+  background-repeat: inherit;
+  background-attachment: scroll;
 }
-.invisible {
-  visibility: hidden;
+
+.logo {
+  height: 100%;
+  width: 100%; 
+  
+  resize: both;
 }
-.element {
-  @include invisible(visible);
-}
-.element {
-  @include invisible(hidden);
+
+.crd{
+  height:100px;
+  width:100px;
 }
