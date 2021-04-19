@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import Deck from './Deck';
 import Score from './Score';
 import Players from './Players';

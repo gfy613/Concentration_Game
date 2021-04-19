@@ -37,14 +37,14 @@
   }
 }
 
-.Btn{
+.Btn {
   color: rgba(128, 128, 128, 0.582);
 }
-.Crd{
+.Crd {
   color: rgba(128, 128, 128, 0.582);
 }
 
-.Bckcolor{
+.Bckcolor {
   background-color: darkgray;
   background-size: cover;
   background-repeat: inherit;
@@ -53,12 +53,12 @@
 
 .logo {
   height: 100%;
-  width: 100%; 
-  
+  width: 100%;
+
   resize: both;
 }
 
-.crd{
-  height:100px;
-  width:100px;
+.crd {
+  height: 100px;
+  width: 100px;
 }

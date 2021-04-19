@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Card, Button, Col } from 'react-bootstrap';
+import React  from 'react'
+import { Card, Col } from 'react-bootstrap';
 import football from "../images/football.jpg"
 
-export default function SingleCard({ card, cardKey, flippedCount, setFlippedCount, flip, setFlip, firstCard, setFirstCard, removeCard, setRemoveCard, score, setScore, player, setPlayer, setGameOver, wait, setWait}) {
-
-  
+export default function SingleCard({ card, cardKey, flippedCount, setFlippedCount, flip, setFlip, firstCard, setFirstCard, removeCard, setRemoveCard, score, setScore, player, setPlayer, setGameOver, wait, setWait }) {
 
   const onCardClick = async () => {
 
@@ -12,20 +10,13 @@ export default function SingleCard({ card, cardKey, flippedCount, setFlippedCoun
       return;
     }
     else {
-      console.log(flip)
       let updateFlip = [...flip]
       updateFlip[cardKey] = true
       setFlip(updateFlip)
       setFlippedCount(flippedCount + 1)
 
       if (flippedCount === 0) {
-
-        console.log("wait: " + wait)
         setFirstCard({ id: cardKey, matchSet: card.matchSet })
-        console.log("check2: " + cardKey)
-        console.log("Check 2a: " + card.matchSet)
-        console.log(flip)
-
       }
 
       else {
@@ -37,7 +28,6 @@ export default function SingleCard({ card, cardKey, flippedCount, setFlippedCoun
           if (firstCard.matchSet === card.matchSet) {
             setTimeout(() => {
               setWait(false)
-              console.log("Its a match!!")
               let updateRemoveCard = [...removeCard]
               updateRemoveCard[firstCard.id] = true
               updateRemoveCard[cardKey] = true
@@ -58,21 +48,15 @@ export default function SingleCard({ card, cardKey, flippedCount, setFlippedCoun
               if (!updateRemoveCard.includes(false)) {
                 setGameOver(true)
               }
-              console.log("total score: " + score[0])
-
             }, 1200)
           }
 
           else {
             setTimeout(() => {
-              console.log("first: " + firstCard.id)
-              console.log("sec: " + cardKey)
               setWait(false)
               updateFlip[cardKey] = false
               updateFlip[firstCard.id] = false
               setFlip(updateFlip)
-              console.log("flip: " + flip)
-              console.log("remove: " + removeCard)
               setFlippedCount(0)
               setFirstCard({ id: null, matchSet: null })
               setPlayer(!player)
